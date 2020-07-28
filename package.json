@@ -1,0 +1,37 @@
+{
+  "name": "leaflet-sandbox",
+  "version": "1.0.0",
+  "description": "practice with Leaflet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spincsak/Leaflet-Sandbox.git"
+  },
+  "author": "Simone Pincsak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/spincsak/Leaflet-Sandbox/issues"
+  },
+  "homepage": "https://github.com/spincsak/Leaflet-Sandbox#readme",
+  "dependencies": {
+    "expres": "0.0.5",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "path": "^0.12.7",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "webpack": "^4.44.0",
+    "webpack-cli": "^3.3.12"
+  }
+}
