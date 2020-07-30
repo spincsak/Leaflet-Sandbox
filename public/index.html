@@ -44,15 +44,32 @@
           }
         ).addTo(myMap);
 
+        //create custom icons
+        const carrot = L.icon({
+          iconUrl: './carrot-pointer.png',
+          shadowUrl: './carrot-shadow-good.png',
+          iconSize: [38, 80],
+          shadowSize: [50, 64],
+          iconAnchor: [22, 80],
+          shadowAnchor: [7, 70],
+          popupAnchor: [-3, -76],
+        });
+
         //set some basic markers, add some popUp text to them
         //the bindPopup takes HTML or just a string
-        const lincolnSquare = L.marker([41.96674, -87.68755]).addTo(myMap);
+        const lincolnSquare = L.marker([41.96674, -87.68755], {
+          icon: carrot,
+        }).addTo(myMap);
         lincolnSquare.bindPopup(
           '<b>Lincoln Square</b><br>Lots of fresh food here!</br>'
         );
-        const andersonville = L.marker([41.98173, -87.66844]).addTo(myMap);
+        const andersonville = L.marker([41.98173, -87.66844], {
+          icon: carrot,
+        }).addTo(myMap);
         andersonville.bindPopup('<b>Welcome to Andersonville</b>');
-        const ravenswood = L.marker([41.97073, -87.67963]).addTo(myMap);
+        const ravenswood = L.marker([41.97073, -87.67963], {
+          icon: carrot,
+        }).addTo(myMap);
         ravenswood.bindPopup('This is Ravenswood');
 
         //create a circle overlay. takes a lat and long for the center point
@@ -78,10 +95,13 @@
 
         //create a standalone popup
         //the openOn(myMap) handles automatic closing of the popup when you click a different one
+
+        /*
         const newPopup = L.popup()
           .setLatLng([41.97, -87.66])
           .setContent("Check out these cool farmer's markets")
           .openOn(myMap);
+        */
 
         //this function handles events, showing an alert when the user clicks on the map
         const popup = L.popup();
