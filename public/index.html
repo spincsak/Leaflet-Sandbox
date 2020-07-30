@@ -25,7 +25,7 @@
       <script>
         //create a basic map:
         //note: it takes an array [Lat, Lng] and a number representing the zoom level
-        const myMap = L.map('mapid').setView([51.505, -0.09], 13);
+        const myMap = L.map('mapid').setView([41.97, -87.66], 13);
 
         //this sets up the map's tiles. needs an access token from Mapbox
         //the access token is currently the Public Default one, so it shouldn't be a security issue
@@ -46,37 +46,41 @@
 
         //set some basic markers, add some popUp text to them
         //the bindPopup takes HTML or just a string
-        const marker = L.marker([51.5, -0.09]).addTo(myMap);
-        marker.bindPopup("<b>Hello world!</b><br>I'm a cool popup!</br>");
-        const newMarker = L.marker([51.507, -0.09]).addTo(myMap);
-        newMarker.bindPopup('<b>London Bridges Falling Down</b>');
+        const lincolnSquare = L.marker([41.96674, -87.68755]).addTo(myMap);
+        lincolnSquare.bindPopup(
+          '<b>Lincoln Square</b><br>Lots of fresh food here!</br>'
+        );
+        const andersonville = L.marker([41.98173, -87.66844]).addTo(myMap);
+        andersonville.bindPopup('<b>Welcome to Andersonville</b>');
+        const ravenswood = L.marker([41.97073, -87.67963]).addTo(myMap);
+        ravenswood.bindPopup('This is Ravenswood');
 
         //create a circle overlay. takes a lat and long for the center point
         //be sure to specify a radius in meters
         //can customize color and opacity
         //added a popup to this as well
-        const circle = L.circle([51.508, -0.11], {
+        const circle = L.circle([41.97359, -87.68446], {
           color: 'red',
-          fillColor: '#f03',
-          fillOpacity: 0.5,
-          radius: 500,
+          fillColor: 'red',
+          fillOpacity: 0.2,
+          radius: 1000,
         }).addTo(myMap);
         circle.bindPopup("Hello, I'm round");
 
         //create a polygon. this takes an array. Each element of the array is its own array with a latitude and longitude for a corner of the polygon
         //these can also get popups, and you can probably pass it an object with color/design specifications as well
         const polygon = L.polygon([
-          [51.509, -0.08],
-          [51.503, -0.06],
-          [51.515, -0.047],
+          [41.975, -87.689],
+          [41.983, -87.659],
+          [41.97, -87.67],
         ]).addTo(myMap);
         polygon.bindPopup('Shapes are fun!');
 
         //create a standalone popup
         //the openOn(myMap) handles automatic closing of the popup when you click a different one
         const newPopup = L.popup()
-          .setLatLng([51.5, -0.09])
-          .setContent("I'm standing alone.")
+          .setLatLng([41.97, -87.66])
+          .setContent("Check out these cool farmer's markets")
           .openOn(myMap);
 
         //this function handles events, showing an alert when the user clicks on the map

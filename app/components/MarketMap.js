@@ -1,7 +1,7 @@
 import React from 'react';
 //ideally this should pull from the database but
 //for now let's just manually grab the array from the file
-import sampleMarkets from '../../server/seedData';
+import sampleMarkets from '../../server/db/seedData.js';
 
 export class MarketMap extends React.Component {
   render() {

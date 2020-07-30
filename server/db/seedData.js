@@ -1,3 +1,6 @@
+//check out node-geocoder library for converting addresses to lat/long coordinates!
+//the leaflet Readme ->> 'awesome cheatsheet' on github has several suggestions
+
 const sampleMarkets = [
   {
     name: 'Lincoln Square Farmers Market',
