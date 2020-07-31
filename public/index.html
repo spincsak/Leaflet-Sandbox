@@ -24,12 +24,9 @@
       <div id="mapid"></div>
       <script>
         //create a basic map:
-        //note: it takes an array [Lat, Lng] and a number representing the zoom level
-        const myMap = L.map('mapid').setView([41.97, -87.66], 13);
+        const myMap = L.map('mapid').setView([41.976015, -87.671499], 14);
 
-        //this sets up the map's tiles. needs an access token from Mapbox
-        //the access token is currently the Public Default one, so it shouldn't be a security issue
-        //however, for more robust projects, consider using a secret token
+        //connect to your map tile provider
         L.tileLayer(
           'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
           {
@@ -48,10 +45,10 @@
         const carrot = L.icon({
           iconUrl: './carrot-pointer.png',
           shadowUrl: './carrot-shadow-good.png',
-          iconSize: [38, 80],
-          shadowSize: [50, 64],
-          iconAnchor: [22, 80],
-          shadowAnchor: [7, 70],
+          iconSize: [30, 70],
+          shadowSize: [45, 60],
+          iconAnchor: [15, 65],
+          shadowAnchor: [5, 50],
           popupAnchor: [-3, -76],
         });
 
@@ -61,49 +58,38 @@
           icon: carrot,
         }).addTo(myMap);
         lincolnSquare.bindPopup(
-          '<b>Lincoln Square</b><br>Lots of fresh food here!</br>'
+          '<b>Lincoln Square Farmers Market</b><br>Lots of fresh food here!</br>'
         );
         const andersonville = L.marker([41.98173, -87.66844], {
           icon: carrot,
         }).addTo(myMap);
-        andersonville.bindPopup('<b>Welcome to Andersonville</b>');
+        andersonville.bindPopup(
+          '<b>Welcome to Andersonville</b><br>Open on Wednesday afternoons.</br>'
+        );
         const ravenswood = L.marker([41.97073, -87.67963], {
           icon: carrot,
         }).addTo(myMap);
-        ravenswood.bindPopup('This is Ravenswood');
+        ravenswood.bindPopup('This is the Ravenswood farmers market');
 
-        //create a circle overlay. takes a lat and long for the center point
-        //be sure to specify a radius in meters
-        //can customize color and opacity
-        //added a popup to this as well
+        //create a circle overlay
         const circle = L.circle([41.97359, -87.68446], {
           color: 'red',
           fillColor: 'red',
           fillOpacity: 0.2,
           radius: 1000,
         }).addTo(myMap);
-        circle.bindPopup("Hello, I'm round");
+        circle.bindPopup('A cool circle!');
 
-        //create a polygon. this takes an array. Each element of the array is its own array with a latitude and longitude for a corner of the polygon
-        //these can also get popups, and you can probably pass it an object with color/design specifications as well
+        //create a polygon
         const polygon = L.polygon([
-          [41.975, -87.689],
-          [41.983, -87.659],
-          [41.97, -87.67],
+          [41.96674, -87.68755],
+          [41.98173, -87.66844],
+          [41.97359, -87.68446],
+          [41.97073, -87.67963],
         ]).addTo(myMap);
         polygon.bindPopup('Shapes are fun!');
 
-        //create a standalone popup
-        //the openOn(myMap) handles automatic closing of the popup when you click a different one
-
-        /*
-        const newPopup = L.popup()
-          .setLatLng([41.97, -87.66])
-          .setContent("Check out these cool farmer's markets")
-          .openOn(myMap);
-        */
-
-        //this function handles events, showing an alert when the user clicks on the map
+        //shows a popup when user clicks on the page
         const popup = L.popup();
         function onMapClick(e) {
           popup
